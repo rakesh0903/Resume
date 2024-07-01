@@ -15,19 +15,19 @@ body {
     margin: 20px auto; /* Centers the container horizontally with some margin */
     padding: 20px; /* Adds padding inside the container */
     background-color: #837e41; /* Sets background color of the container */
-    border-radius: 8px; /* Rounds the corners of the container */
+    border-radius: 4px; /* Rounds the corners of the container */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a subtle box shadow */
 }
 
 /* Heading styles */
 h1, h2 {
     text-align: center; /* Centers headings */
-    color: #110103; /* Sets the color of headings */
+    color: #f6fcfc; /* Sets the color of headings */
 }
 
 /* Paragraph styles */
 p {
-    color: #666; /* Sets the color of paragraphs */
+    color: #130303; /* Sets the color of paragraphs */
 }
 
 /* Courses list styles */
