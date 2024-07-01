@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Global styles */
 body {
     font-family: 'Roboto', sans-serif; /* Sets the font family for the entire page */
@@ -12,10 +10,11 @@ body {
 
 /* Container styles */
 .container {
-    max-width: 800px; /* Sets maximum width for content */
+    width: 100%; /* Full width of the viewport */
+    max-width: 800px; /* Maximum width for content */
     margin: 20px auto; /* Centers the container horizontally with some margin */
     padding: 20px; /* Adds padding inside the container */
-    background-color: #fff; /* Sets background color of the container */
+    background-color: #cf3030; /* Sets background color of the container */
     border-radius: 8px; /* Rounds the corners of the container */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a subtle box shadow */
 }
@@ -23,7 +22,7 @@ body {
 /* Heading styles */
 h1, h2 {
     text-align: center; /* Centers headings */
-    color: #007bff; /* Sets the color of headings */
+    color: #ff0022; /* Sets the color of headings */
 }
 
 /* Paragraph styles */
