@@ -1,79 +1,52 @@
-/* Global styles */
+/* styles.css */
+
 body {
-    font-family: 'Roboto', sans-serif; /* Sets the font family for the entire page */
-    line-height: 1.6; /* Sets the line height for better readability */
-    background-color: #0d0d88; /* Sets the background color of the body */
-    color: #f0e6e6; /* Sets the text color */
-    margin: 0; /* Removes default margin */
-    padding: 0; /* Removes default padding */
-}
-
-/* Container styles */
-.container {
-    width: 100%; /* Full width of the viewport */
-    max-width: 800px; /* Maximum width for content */
-    margin: 20px auto; /* Centers the container horizontally with some margin */
-    padding: 20px; /* Adds padding inside the container */
-    background-color: #837e41; /* Sets background color of the container */
-    border-radius: 4px; /* Rounds the corners of the container */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a subtle box shadow */
-}
-
-/* Heading styles */
-h1, h2 {
-    text-align: center; /* Centers headings */
-    color: #f6fcfc; /* Sets the color of headings */
-}
-
-/* Paragraph styles */
-p {
-    color: #f6fcfc; /* Sets the color of paragraphs to match headings */
-}
-
-/* Courses list styles */
-.courses {
-    list-style-type: none; /* Removes default list styles */
-    padding-left: 0; /* Removes left padding from the list */
-}
-
-.courses li {
-    margin-bottom: 10px; /* Adds margin below each list item */
-}
-
-.courses a {
-    text-decoration: none; /* Removes underline from links */
-    color: #042547; /* Sets the color of links */
-    transition: color 0.3s ease; /* Smooth transition for link color change */
-}
-
-.courses a:hover {
-    color: #0056b3; /* Sets link color on hover */
-}
-
-/* Two-column history table */
-.history-table {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.history-table .column {
-    width: calc(50% - 10px); /* 50% width with 10px spacing between columns */
-}
-
-.history-table table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.history-table th, .history-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-.history-table th {
-    background-color: #f2f2f2;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
     color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    color: #007bff;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #007bff;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.job {
+    margin-bottom: 20px;
+}
+
+.job h3 {
+    margin-bottom: 5px;
+}
+
+.job p {
+    margin-bottom: 10px;
 }
