@@ -3,7 +3,7 @@ body {
     font-family: 'Roboto', sans-serif; /* Sets the font family for the entire page */
     line-height: 1.6; /* Sets the line height for better readability */
     background-color: #0d0d88; /* Sets the background color of the body */
-    color: #0a0303; /* Sets the text color */
+    color: #f0e6e6; /* Sets the text color */
     margin: 0; /* Removes default margin */
     padding: 0; /* Removes default padding */
 }
