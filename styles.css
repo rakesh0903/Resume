@@ -1,47 +1,80 @@
 /* styles.css */
 
+/* Global styles */
 body {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    background-color: #f8f9fa;
-    color: #333;
-    margin: 0;
-    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Sets the font family for the entire page */
+    line-height: 1.6; /* Sets the line height for better readability */
+    background-color: #f8f9fa; /* Sets the background color of the body */
+    color: #333; /* Sets the text color */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
 }
 
+/* Container styles */
 .container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px; /* Sets maximum width for content */
+    margin: 20px auto; /* Centers the container horizontally with some margin */
+    padding: 20px; /* Adds padding inside the container */
+    background-color: #fff; /* Sets background color of the container */
+    border-radius: 8px; /* Rounds the corners of the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a subtle box shadow */
 }
 
+/* Heading styles */
 h1, h2 {
-    text-align: center;
-    color: #007bff;
+    text-align: center; /* Centers headings */
+    color: #007bff; /* Sets the color of headings */
 }
 
+/* Paragraph styles */
 p {
-    color: #666;
+    color: #666; /* Sets the color of paragraphs */
 }
 
+/* Courses list styles */
 .courses {
-    list-style-type: none;
-    padding-left: 0;
+    list-style-type: none; /* Removes default list styles */
+    padding-left: 0; /* Removes left padding from the list */
 }
 
 .courses li {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Adds margin below each list item */
 }
 
 .courses a {
-    text-decoration: none;
-    color: #007bff;
-    transition: color 0.3s ease;
+    text-decoration: none; /* Removes underline from links */
+    color: #007bff; /* Sets the color of links */
+    transition: color 0.3s ease; /* Smooth transition for link color change */
 }
 
 .courses a:hover {
-    color: #0056b3;
+    color: #0056b3; /* Sets link color on hover */
+}
+
+/* Two-column history table */
+.history-table {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.history-table .column {
+    width: calc(50% - 10px); /* 50% width with 10px spacing between columns */
+}
+
+.history-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.history-table th, .history-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.history-table th {
+    background-color: #f2f2f2;
+    color: #333;
 }
