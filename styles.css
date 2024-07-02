@@ -3,7 +3,7 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background-color: #f8f9fa;
+    background-color: #76b7f8;
     color: #333;
     margin: 0;
     padding: 0;
@@ -14,7 +14,7 @@ body {
     width: 100%; /* Ensures container expands to fill available space */
     margin: 20px auto;
     padding: 20px;
-    background-color: #71c8eb;
+    background-color: #69f1db;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -24,7 +24,7 @@ header {
 }
 
 h1 {
-    color: #007bff;
+    color: #060472;
 }
 
 section {
@@ -32,7 +32,7 @@ section {
 }
 
 h2 {
-    color: #007bff;
+    color: #060472;
 }
 
 ul {
