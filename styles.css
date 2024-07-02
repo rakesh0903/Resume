@@ -10,10 +10,10 @@ body {
 }
 
 .container {
-    max-width: 800px;
-    width: 100%; /* Ensures container expands to fill available space */
-    margin: 0px auto;
-    padding: 0%;
+    width: 100%;
+    max-width: 800px; /* Adjust max-width as per your design */
+    margin: 0 auto;
+    padding: 20px; /* Adjust padding as needed */
     background-color: #69f1db;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
