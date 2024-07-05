@@ -11,7 +11,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 800px; /* Adjust max-width as per your design */
+    max-width: 900px; /* Adjust max-width as per your design */
     margin: 0 auto;
     padding: 20px; /* Adjust padding as needed */
     background-color: #69f1db;
