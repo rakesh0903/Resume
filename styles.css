@@ -3,7 +3,7 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f0f0f0;
+    background-color: #ebf191;
     margin: 0;
     padding: 0;
 }
@@ -16,7 +16,7 @@ body {
 }
 
 .house {
-    background: #fff;
+    background: #b5dff7;
     margin: 20px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -25,11 +25,11 @@ body {
 }
 
 h1, h2 {
-    color: #333;
+    color: #a31212;
 }
 
 p {
-    color: #666;
+    color: #a3f184;
 }
 
 footer {
