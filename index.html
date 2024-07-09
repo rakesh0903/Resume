@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -135,9 +134,67 @@
         footer a:hover {
             color: #f8f9fa; /* Light gray on hover */
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 5% from the top, centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+        }
+
+        /* Add Animation */
+        @keyframes animatetop {
+            from {top: -300px; opacity: 0}
+            to {top: 0; opacity: 1}
+        }
+
+        /* Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Images in Modal */
+        .modal-body {
+            padding: 2px 16px;
+            text-align: center;
+        }
+
+        .modal-body img {
+            width: 100%;
+            max-width: 400px;
+        }
     </style>
 </head>
-
 <body>
     <header>
         <div class="container">
@@ -148,46 +205,54 @@
     <nav>
         <div class="container">
             <ul>
-                <li><a href="#houses">Houses for Rent</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <!-- Add more menu items as needed -->
+                <li><a href="#" onclick="showArea('kokar-chowk')">Kokar Chowk</a></li>
+                <li><a href="#" onclick="showArea('kokar-bazaar')">Kokar Bazaar</a></li>
+                <li><a href="#" onclick="showArea('delatoli')">Delatoli</a></li>
+                <li><a href="#" onclick="showArea('deepatoli-dhurwa')">Deepatoli Dhurwa</a></li>
+                <li><a href="#" onclick="showArea('hinoo')">Hinoo</a></li>
+                <li><a href="#" onclick="showArea('harmu')">Harmu</a></li>
+                <li><a href="#" onclick="showArea('booty-more')">Booty More</a></li>
+                <li><a href="#" onclick="showArea('ratu-road')">Ratu Road</a></li>
+                <li><a href="#" onclick="showArea('upper-bazaar')">Upper Bazaar</a></li>
+                <li><a href="#" onclick="showArea('dangra-toli')">Dangra Toli</a></li>
+                <!-- Add more areas as needed -->
             </ul>
         </div>
     </nav>
 
     <div class="container">
         <section id="houses">
-            <!-- Example house listing -->
+            <!-- Example house listings -->
             <div class="house">
                 <h2>Beautiful Family Home</h2>
-                <p><strong>Location:</strong> Delatoli, Tiril, Kokar, Ranchi, Jharkhand</p>
-                <p><strong>Price:</strong> $1200/month</p>
-                <a href="#">View Details</a>
+                <a href="#" onclick="openModal('beautiful-family-home')">View Details</a>
             </div>
 
-            <!-- Add more house listings as needed -->
             <div class="house">
                 <h2>Modern Apartment</h2>
-                <p><strong>Location:</strong> City Center, Ranchi, Jharkhand</p>
-                <p><strong>Price:</strong> $1500/month</p>
-                <a href="#">View Details</a>
+                <a href="#" onclick="openModal('modern-apartment')">View Details</a>
             </div>
 
             <div class="house">
                 <h2>Spacious Villa</h2>
-                <p><strong>Location:</strong> Morabadi, Ranchi, Jharkhand</p>
-                <p><strong>Price:</strong> $1800/month</p>
-                <a href="#">View Details</a>
+                <a href="#" onclick="openModal('spacious-villa')">View Details</a>
             </div>
 
             <div class="house">
                 <h2>Cozy Cottage</h2>
-                <p><strong>Location:</strong> Hinoo, Ranchi, Jharkhand</p>
-                <p><strong>Price:</strong> $1000/month</p>
-                <a href="#">View Details</a>
+                <a href="#" onclick="openModal('cozy-cottage')">View Details</a>
             </div>
         </section>
+    </div>
+
+    <!-- Modal for displaying details -->
+    <div id="houseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent" class="modal-body">
+                <!-- Content will be dynamically updated -->
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -197,97 +262,40 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Client Login Popup and OTP functionality -->
+    <!-- JavaScript for Modal and Dynamic Content -->
     <script src="script.js"></script>
     <script>
-        // Function to open client login popup
-        function openClientLoginPopup() {
-            var popup = window.open('', 'clientLoginPopup', 'width=400,height=400');
-            var htmlContent = `
-                <html>
-                <head>
-                    <title>Client Login</title>
-                    <style>
-                        body {
-                            font-family: Arial, sans-serif;
-                            padding: 20px;
-                        }
-                        input {
-                            padding: 10px;
-                            margin-bottom: 10px;
-                            width: calc(100% - 20px);
-                            font-size: 1rem;
-                            border: 1px solid #ccc;
-                            border-radius: 4px;
-                            outline: none;
-                        }
-                        .otp-container {
-                            display: none;
-                        }
-                        .otp-container.active {
-                            display: block;
-                        }
-                        .btn-container {
-                            text-align: center;
-                            margin-top: 20px;
-                        }
-                        .btn-container button {
-                            padding: 12px 20px;
-                            background-color: #343a40; /* Dark gray button */
-                            color: #fff;
-                            border: none;
-                            border-radius: 4px;
-                            cursor: pointer;
-                            font-size: 1rem;
-                            transition: background-color 0.3s ease;
-                        }
-                        .btn-container button:hover {
-                            background-color: #555; /* Darker gray on hover */
-                        }
-                    </style>
-                </head>
-                <body>
-                    <h2>Client Login</h2>
-                    <input id="mobileNumberInput" type="tel" placeholder="Enter your mobile number">
-                    <div class="otp-container" id="otpContainer">
-                        <input id="otpInput" type="text" placeholder="Enter OTP">
-                    </div>
-                    <div class="btn-container">
-                        <button id="getOTPBtn">Get OTP</button>
-                        <button id="resendOTPBtn">Resend OTP</button>
-                        <button id="verifyOTPBtn">Verify OTP</button>
-                    </div>
-                    <script>
-                        // Script for handling OTP functionality and content update
-                        document.getElementById('verifyOTPBtn').addEventListener('click', function() {
-                            var otp = document.getElementById('otpInput').value;
-                            if (otp === '123456') { // Example OTP verification (replace with actual verification logic)
-                                window.opener.document.getElementById('houses').innerHTML = `
-                                    <div class="house">
-                                        <h2>New House Listing</h2>
-                                        <p><strong>Location:</strong> New Location, Ranchi, Jharkhand</p>
-                                        <p><strong>Price:</strong> $1500/month</p>
-                                        <a href="#">View Details</a>
-                                    </div>
-                                    <!-- Add more dynamically added house listings here -->
-                                `;
-                                window.close(); // Close the popup after successful verification
-                            } else {
-                                alert('Invalid OTP. Please try again.');
-                            }
-                        });
-                    </script>
-                </body>
-                </html>
+        // Function to open modal with house details
+        function openModal(houseType) {
+            var modal = document.getElementById('houseModal');
+            var modalContent = document.getElementById('modalContent');
+
+            // Example content (replace with actual data retrieval logic)
+            var content = `
+                <h2>House Details</h2>
+                <p><strong>Type:</strong> ${houseType}</p>
+                <p><strong>Location:</strong> Ranchi, Jharkhand</p>
+                <p><strong>Price:</strong> $1200/month (example price)</p>
+                <div class="modal-body">
+                    <img src="house1.jpg" alt="House 1">
+                    <img src="house2.jpg" alt="House 2">
+                    <!-- Add more images as needed -->
+                </div>
             `;
-            popup.document.write(htmlContent);
+            
+            modalContent.innerHTML = content;
+            modal.style.display = 'block';
         }
 
-        // Event listener for client login button
-        document.getElementById('clientLoginBtn').addEventListener('click', function() {
-            openClientLoginPopup();
-        });
-    </script>
-</body>
+        // Function to close modal
+        function closeModal() {
+            var modal = document.getElementById('houseModal');
+            modal.style.display = 'none';
+        }
 
-</html>
+        // Function to show houses available in specific area
+        function showArea(area) {
+            // Example logic to filter houses based on area
+            alert(`Houses available in ${area}`);
+            // Implement logic to filter and display houses based on are
+        }
