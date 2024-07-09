@@ -1,53 +1,38 @@
-/* styles.css */
+/* style.css */
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #76b7f8;
-    color: #333;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    width: 100%;
-    max-width: 900px; /* Adjust max-width as per your design */
-    margin: 0 auto;
-    padding: 20px; /* Adjust padding as needed */
-    background-color: #69f1db;
-    border-radius: 8px;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding-top: 20px;
+}
+
+.house {
+    background: #fff;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-header {
+h1, h2 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+footer {
     text-align: center;
-}
-
-h1 {
-    color: #060472;
-}
-
-section {
-    margin-bottom: 20px;
-}
-
-h2 {
-    color: #060472;
-}
-
-ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.job {
-    margin-bottom: 20px;
-}
-
-.job h3 {
-    margin-bottom: 5px;
-}
-
-.job p {
-    margin-bottom: 10px;
+    margin-top: 20px;
 }
