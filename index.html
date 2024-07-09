@@ -145,8 +145,7 @@
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            background-color: rgba(0,0,0,0.4); /* Black with opacity */
             padding-top: 60px;
         }
 
@@ -183,15 +182,75 @@
             cursor: pointer;
         }
 
-        /* Images in Modal */
-        .modal-body {
-            padding: 2px 16px;
+        /* Form Styling */
+        .login-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-form input {
+            padding: 8px;
+            margin-right: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .login-form button {
+            padding: 8px 16px;
+            background-color: #007bff; /* Blue button background */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .otp-options {
+            margin-top: 10px;
+        }
+
+        .otp-options button {
+            margin-right: 10px;
+            background-color: #28a745; /* Green button background */
+        }
+
+        .otp-options button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        /* Area Selection */
+        .area-selection {
+            margin-top: 20px;
             text-align: center;
         }
 
-        .modal-body img {
-            width: 100%;
-            max-width: 400px;
+        .area-selection select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .area-selection button {
+            padding: 8px 16px;
+            background-color: #007bff; /* Blue button background */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .area-selection button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
         }
     </style>
 </head>
@@ -205,16 +264,16 @@
     <nav>
         <div class="container">
             <ul>
-                <li><a href="#" onclick="showArea('kokar-chowk')">Kokar Chowk</a></li>
-                <li><a href="#" onclick="showArea('kokar-bazaar')">Kokar Bazaar</a></li>
-                <li><a href="#" onclick="showArea('delatoli')">Delatoli</a></li>
-                <li><a href="#" onclick="showArea('deepatoli-dhurwa')">Deepatoli Dhurwa</a></li>
-                <li><a href="#" onclick="showArea('hinoo')">Hinoo</a></li>
-                <li><a href="#" onclick="showArea('harmu')">Harmu</a></li>
-                <li><a href="#" onclick="showArea('booty-more')">Booty More</a></li>
-                <li><a href="#" onclick="showArea('ratu-road')">Ratu Road</a></li>
-                <li><a href="#" onclick="showArea('upper-bazaar')">Upper Bazaar</a></li>
-                <li><a href="#" onclick="showArea('dangra-toli')">Dangra Toli</a></li>
+                <li><a href="#" onclick="showLoginModal('kokar-chowk')">Kokar Chowk</a></li>
+                <li><a href="#" onclick="showLoginModal('kokar-bazaar')">Kokar Bazaar</a></li>
+                <li><a href="#" onclick="showLoginModal('delatoli')">Delatoli</a></li>
+                <li><a href="#" onclick="showLoginModal('deepatoli')">Deepatoli</a></li>
+                <li><a href="#" onclick="showLoginModal('hinoo')">Hinoo</a></li>
+                <li><a href="#" onclick="showLoginModal('harmu')">Harmu</a></li>
+                <li><a href="#" onclick="showLoginModal('booty-more')">Booty More</a></li>
+                <li><a href="#" onclick="showLoginModal('ratu-road')">Ratu Road</a></li>
+                <li><a href="#" onclick="showLoginModal('upper-bazaar')">Upper Bazaar</a></li>
+                <li><a href="#" onclick="showLoginModal('dangra-toli')">Dangra Toli</a></li>
                 <!-- Add more areas as needed -->
             </ul>
         </div>
@@ -222,35 +281,39 @@
 
     <div class="container">
         <section id="houses">
-            <!-- Example house listings -->
-            <div class="house">
-                <h2>Beautiful Family Home</h2>
-                <a href="#" onclick="openModal('beautiful-family-home')">View Details</a>
-            </div>
-
-            <div class="house">
-                <h2>Modern Apartment</h2>
-                <a href="#" onclick="openModal('modern-apartment')">View Details</a>
-            </div>
-
-            <div class="house">
-                <h2>Spacious Villa</h2>
-                <a href="#" onclick="openModal('spacious-villa')">View Details</a>
-            </div>
-
-            <div class="house">
-                <h2>Cozy Cottage</h2>
-                <a href="#" onclick="openModal('cozy-cottage')">View Details</a>
-            </div>
+            <!-- Example house listings (will be dynamically updated) -->
         </section>
     </div>
 
-    <!-- Modal for displaying details -->
-    <div id="houseModal" class="modal">
+    <!-- Modal for client login -->
+    <div id="loginModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modalContent" class="modal-body">
-                <!-- Content will be dynamically updated -->
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <div class="login-form">
+                <input type="tel" id="mobileNumberInput" placeholder="Enter your mobile number">
+                <button id="getOTPBtn" onclick="getOTP()">Get OTP</button>
+                <div id="otpContainer" class="otp-options" style="display: none;">
+                    <input type="text" id="otpInput" placeholder="Enter OTP">
+                    <button id="resendOTPBtn" onclick="getOTP()">Resend OTP</button>
+                    <button id="verifyOTPBtn" onclick="verifyOTP()">Verify OTP</button>
+                </div>
+            </div>
+            <div class="area-selection" style="display: none;">
+                <select id="areaSelect">
+                    <option value="">Select Area</option>
+                    <option value="kokar-chowk">Kokar Chowk</option>
+                    <option value="kokar-bazaar">Kokar Bazaar</option>
+                    <option value="delatoli">Delatoli</option>
+                    <option value="deepatoli">Deepatoli </option>
+                    <option value="hinoo">Hinoo</option>
+                    <option value="harmu">Harmu</option>
+                    <option value="booty-more">Booty More</option>
+                    <option value="ratu-road">Ratu Road</option>
+                    <option value="upper-bazaar">Upper Bazaar</option>
+                    <option value="dangra-toli">Dangra Toli</option>
+                    <!-- Add more areas as needed -->
+                </select>
+                <button onclick="showSelectedArea()">Show Houses</button>
             </div>
         </div>
     </div>
@@ -262,40 +325,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Modal and Dynamic Content -->
+    <!-- JavaScript for Client Login and House Display -->
     <script src="script.js"></script>
-    <script>
-        // Function to open modal with house details
-        function openModal(houseType) {
-            var modal = document.getElementById('houseModal');
-            var modalContent = document.getElementById('modalContent');
-
-            // Example content (replace with actual data retrieval logic)
-            var content = `
-                <h2>House Details</h2>
-                <p><strong>Type:</strong> ${houseType}</p>
-                <p><strong>Location:</strong> Ranchi, Jharkhand</p>
-                <p><strong>Price:</strong> $1200/month (example price)</p>
-                <div class="modal-body">
-                    <img src="house1.jpg" alt="House 1">
-                    <img src="house2.jpg" alt="House 2">
-                    <!-- Add more images as needed -->
-                </div>
-            `;
-            
-            modalContent.innerHTML = content;
-            modal.style.display = 'block';
-        }
-
-        // Function to close modal
-        function closeModal() {
-            var modal = document.getElementById('houseModal');
-            modal.style.display = 'none';
-        }
-
-        // Function to show houses available in specific area
-        function showArea(area) {
-            // Example logic to filter houses based on area
-            alert(`Houses available in ${area}`);
-            // Implement logic to filter and display houses based on are
-        }
+</body>
+</html>

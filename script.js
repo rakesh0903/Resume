@@ -1,105 +1,81 @@
-// script.js
-
-// Function to open client login popup
-function openClientLoginPopup() {
-    var popup = window.open('', 'clientLoginPopup', 'width=400,height=400');
-    var htmlContent = `
-        <html>
-        <head>
-            <title>Client Login</title>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    padding: 20px;
-                }
-                input {
-                    padding: 10px;
-                    margin-bottom: 10px;
-                    width: calc(100% - 20px);
-                    font-size: 1rem;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    outline: none;
-                }
-                .otp-container {
-                    display: none;
-                }
-                .otp-container.active {
-                    display: block;
-                }
-                .btn-container {
-                    text-align: center;
-                    margin-top: 20px;
-                }
-                .btn-container button {
-                    padding: 12px 20px;
-                    background-color: #007bff;
-                    color: #fff;
-                    border: none;
-                    border-radius: 4px;
-                    cursor: pointer;
-                    font-size: 1rem;
-                    transition: background-color 0.3s ease;
-                }
-                .btn-container button:hover {
-                    background-color: #0056b3;
-                }
-            </style>
-        </head>
-        <body>
-            <h2>Client Login</h2>
-            <input id="mobileNumberInput" type="tel" placeholder="Enter your mobile number">
-            <div class="otp-container" id="otpContainer">
-                <input id="otpInput" type="text" placeholder="Enter OTP">
-            </div>
-            <div class="btn-container">
-                <button id="getOTPBtn">Get OTP</button>
-                <button id="resendOTPBtn">Resend OTP</button>
-                <button id="verifyOTPBtn">Verify OTP</button>
-            </div>
-            <script src="script.js"></script>
-        </body>
-        </html>
-    `;
-    popup.document.write(htmlContent);
+// Function to open client login modal with area-specific functionality
+function showLoginModal(area) {
+    var modal = document.getElementById('loginModal');
+    modal.style.display = 'block';
+    document.getElementById('selectedArea').value = area; // Store selected area in hidden input
 }
 
-// Event listener for client login button
-document.getElementById('clientLoginBtn').addEventListener('click', function() {
-    openClientLoginPopup();
-});
+// Function to close client login modal
+function closeLoginModal() {
+    var modal = document.getElementById('loginModal');
+    modal.style.display = 'none';
+}
 
-// JavaScript for OTP functionality in popup
-var otpContainer = document.getElementById('otpContainer');
-var getOTPBtn = document.getElementById('getOTPBtn');
-var resendOTPBtn = document.getElementById('resendOTPBtn');
-var verifyOTPBtn = document.getElementById('verifyOTPBtn');
+// Function to simulate OTP generation (replace with actual backend logic)
+function getOTP() {
+    var otpContainer = document.getElementById('otpContainer');
+    otpContainer.style.display = 'block';
+}
 
-getOTPBtn.addEventListener('click', function() {
-    var mobileNumber = document.getElementById('mobileNumberInput').value;
-    if (mobileNumber) {
-        alert('OTP sent to ' + mobileNumber);
-        otpContainer.classList.add('active');
-    } else {
-        alert('Please enter a valid mobile number.');
-    }
-});
-
-resendOTPBtn.addEventListener('click', function() {
-    var mobileNumber = document.getElementById('mobileNumberInput').value;
-    if (mobileNumber) {
-        alert('Resent OTP to ' + mobileNumber);
-    } else {
-        alert('Please enter a valid mobile number.');
-    }
-});
-
-verifyOTPBtn.addEventListener('click', function() {
+// Function to verify OTP and show area selection
+function verifyOTP() {
     var otpInput = document.getElementById('otpInput').value;
-    if (otpInput) {
-        alert('OTP verified successfully!');
-        window.close(); // Close popup after verification
+    if (otpInput === '123456') { // Example OTP verification (replace with actual logic)
+        document.getElementById('otpContainer').style.display = 'none';
+        document.getElementById('areaSelection').style.display = 'block';
     } else {
-        alert('Please enter OTP to verify.');
+        alert('Invalid OTP. Please try again.');
     }
-});
+}
+
+// Function to display houses based on selected area
+function showSelectedArea() {
+    var selectedArea = document.getElementById('areaSelect').value;
+    if (selectedArea) {
+        // Example: Fetch houses data for selected area (replace with actual data fetching logic)
+        var housesData = getHousesData(selectedArea);
+        displayHouses(housesData);
+    } else {
+        alert('Please select an area.');
+    }
+}
+
+// Example function to fetch houses data based on selected area (replace with actual backend logic)
+function getHousesData(area) {
+    // Simulated data for demonstration
+    switch (area) {
+        case 'kokar-chowk':
+            return [
+                { type: 'Beautiful Family Home', price: '$1200/month', location: 'Kokar Chowk' },
+                { type: 'Modern Apartment', price: '$1500/month', location: 'Kokar Chowk' },
+                // Add more houses as needed
+            ];
+        case 'kokar-bazaar':
+            return [
+                { type: 'Spacious Villa', price: '$1800/month', location: 'Kokar Bazaar' },
+                { type: 'Cozy Cottage', price: '$1000/month', location: 'Kokar Bazaar' },
+                // Add more houses as needed
+            ];
+        // Add cases for other areas
+        default:
+            return [];
+    }
+}
+
+// Function to display houses in the DOM
+function displayHouses(housesData) {
+    var housesContainer = document.getElementById('houses');
+    housesContainer.innerHTML = ''; // Clear previous content
+
+    housesData.forEach(function(house) {
+        var houseHTML = `
+            <div class="house">
+                <h2>${house.type}</h2>
+                <p><strong>Location:</strong> ${house.location}</p>
+                <p><strong>Price:</strong> ${house.price}</p>
+                <a href="#">View Details</a>
+            </div>
+        `;
+        housesContainer.insertAdjacentHTML('beforeend', houseHTML);
+    });
+}
