@@ -3,9 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
         'kokar-chowk': [
             {
                 title: 'Beautiful Family Home',
-                location: 'Kokar Chowk, Ranchi, Jharkhand',
+                type: '2 BHK Apartment',
+                address: 'Kokar Chowk, Ranchi, Jharkhand',
+                contact: 'Contact: 123-456-7890',
                 price: '$1200/month',
-                details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 imageUrl: 'house1.jpg', // Replace with actual image URL
                 mapLocation: { lat: 23.358069, lng: 85.343068 }, // Replace with actual geo-location coordinates
             },
@@ -14,9 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
         'kokar-bazaar': [
             {
                 title: 'Modern Apartment',
-                location: 'Kokar Bazaar, Ranchi, Jharkhand',
+                type: '3 BHK Apartment',
+                address: 'Kokar Bazaar, Ranchi, Jharkhand',
+                contact: 'Contact: 234-567-8901',
                 price: '$1500/month',
-                details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 imageUrl: 'house2.jpg', // Replace with actual image URL
                 mapLocation: { lat: 23.371667, lng: 85.324167 }, // Replace with actual geo-location coordinates
             },
@@ -37,11 +39,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const htmlContent = `
                     <h2>${house.title}</h2>
-                    <p><strong>Location:</strong> ${house.location}</p>
+                    <p>${house.type}</p>
+                    <p><strong>Address:</strong> ${house.address}</p>
+                    <p>${house.contact}</p>
                     <p><strong>Price:</strong> ${house.price}</p>
-                    <p>${house.details}</p>
                     <img src="${house.imageUrl}" alt="${house.title}">
-                    <a href="#">View Details</a>
+                    <div class="details">
+                        <span>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                        <span>Facilities: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                    </div>
+                    <div class="payment">
+                        <button onclick="showDetails('${house.title}')">View Details (Pay Rs.100)</button>
+                    </div>
                 `;
 
                 houseElement.innerHTML = htmlContent;
@@ -55,8 +64,20 @@ document.addEventListener('DOMContentLoaded', function () {
     areaLinks.forEach(link => {
         link.addEventListener('click', function (event) {
             event.preventDefault();
-            const areaId = link.getAttribute('href').substring(1); // Get area ID without #
+            const areaId = link.getAttribute('href').substring(1);
             displayHouses(areaId);
         });
     });
+
+    // Function to simulate showing house details after payment
+    function showDetails(houseTitle) {
+        // Simulate payment process (could integrate with actual payment gateway logic)
+        const paymentSuccessful = confirm('Pay Rs.100 to view details?');
+        if (paymentSuccessful) {
+            alert(`Details for ${houseTitle}:\nLorem ipsum dolor sit amet, consectetur adipiscing elit.`);
+            // Could show more details or redirect to a new page with detailed information
+        } else {
+            alert('Payment cancelled.');
+        }
+    }
 });

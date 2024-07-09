@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -96,17 +97,33 @@
             margin-bottom: 10px;
         }
 
-        .house a {
-            display: inline-block;
+        .house .details {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .house .details span {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .house .payment {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .house .payment button {
             padding: 8px 16px;
             background-color: #007bff; /* Blue button background */
             color: #fff;
-            text-decoration: none;
+            border: none;
             border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
             transition: background-color 0.3s ease;
         }
 
-        .house a:hover {
+        .house .payment button:hover {
             background-color: #0056b3; /* Darker blue on hover */
         }
 
@@ -134,126 +151,9 @@
         footer a:hover {
             color: #f8f9fa; /* Light gray on hover */
         }
-
-        /* Modal Styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.4); /* Black with opacity */
-            padding-top: 60px;
-        }
-
-        /* Modal Content */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto; /* 5% from the top, centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-            animation-name: animatetop;
-            animation-duration: 0.4s;
-        }
-
-        /* Add Animation */
-        @keyframes animatetop {
-            from {top: -300px; opacity: 0}
-            to {top: 0; opacity: 1}
-        }
-
-        /* Close Button */
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Form Styling */
-        .login-form {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .login-form input {
-            padding: 8px;
-            margin-right: 10px;
-            width: 200px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .login-form button {
-            padding: 8px 16px;
-            background-color: #007bff; /* Blue button background */
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .login-form button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
-        }
-
-        .otp-options {
-            margin-top: 10px;
-        }
-
-        .otp-options button {
-            margin-right: 10px;
-            background-color: #28a745; /* Green button background */
-        }
-
-        .otp-options button:hover {
-            background-color: #218838; /* Darker green on hover */
-        }
-
-        /* Area Selection */
-        .area-selection {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .area-selection select {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .area-selection button {
-            padding: 8px 16px;
-            background-color: #007bff; /* Blue button background */
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .area-selection button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
-        }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -264,58 +164,25 @@
     <nav>
         <div class="container">
             <ul>
-                <li><a href="#" onclick="showLoginModal('kokar-chowk')">Kokar Chowk</a></li>
-                <li><a href="#" onclick="showLoginModal('kokar-bazaar')">Kokar Bazaar</a></li>
-                <li><a href="#" onclick="showLoginModal('delatoli')">Delatoli</a></li>
-                <li><a href="#" onclick="showLoginModal('deepatoli')">Deepatoli</a></li>
-                <li><a href="#" onclick="showLoginModal('hinoo')">Hinoo</a></li>
-                <li><a href="#" onclick="showLoginModal('harmu')">Harmu</a></li>
-                <li><a href="#" onclick="showLoginModal('booty-more')">Booty More</a></li>
-                <li><a href="#" onclick="showLoginModal('ratu-road')">Ratu Road</a></li>
-                <li><a href="#" onclick="showLoginModal('upper-bazaar')">Upper Bazaar</a></li>
-                <li><a href="#" onclick="showLoginModal('dangra-toli')">Dangra Toli</a></li>
-                <!-- Add more areas as needed -->
+                <li><a href="#kokar-chowk">Kokar Chowk</a></li>
+                <li><a href="#kokar-bazaar">Kokar Bazaar</a></li>
+                <li><a href="#delatoli">Delatoli</a></li>
+                <li><a href="#deepatoli">Deepatoli</a></li>
+                <li><a href="#dhurwa">Dhurwa</a></li>
+                <li><a href="#hinoo">Hinoo</a></li>
+                <li><a href="#harmu">Harmu</a></li>
+                <li><a href="#booty-more">Booty More</a></li>
+                <li><a href="#ratu-road">Ratu Road</a></li>
+                <li><a href="#upper-bazaar">Upper Bazaar</a></li>
+                <li><a href="#dangra-toli">Dangra Toli</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
         <section id="houses">
-            <!-- Example house listings (will be dynamically updated) -->
+            <!-- House listings will be dynamically added here based on selected area -->
         </section>
-    </div>
-
-    <!-- Modal for client login -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeLoginModal()">&times;</span>
-            <div class="login-form">
-                <input type="tel" id="mobileNumberInput" placeholder="Enter your mobile number">
-                <button id="getOTPBtn" onclick="getOTP()">Get OTP</button>
-                <div id="otpContainer" class="otp-options" style="display: none;">
-                    <input type="text" id="otpInput" placeholder="Enter OTP">
-                    <button id="resendOTPBtn" onclick="getOTP()">Resend OTP</button>
-                    <button id="verifyOTPBtn" onclick="verifyOTP()">Verify OTP</button>
-                </div>
-            </div>
-            <div class="area-selection" style="display: none;">
-                <select id="areaSelect">
-                    <option value="">Select Area</option>
-                    <option value="kokar-chowk">Kokar Chowk</option>
-                    <option value="kokar-bazaar">Kokar Bazaar</option>
-                    <option value="delatoli">Delatoli</option>
-                    <option value="deepatoli">Deepatoli </option>
-                    <option value="hinoo">Hinoo</option>
-                    <option value="harmu">Harmu</option>
-                    <option value="booty-more">Booty More</option>
-                    <option value="ratu-road">Ratu Road</option>
-                    <option value="upper-bazaar">Upper Bazaar</option>
-                    <option value="dangra-toli">Dangra Toli</option>
-                    <!-- Add more areas as needed -->
-                </select>
-                <button onclick="showSelectedArea()">Show Houses</button>
-            </div>
-        </div>
     </div>
 
     <footer>
@@ -325,7 +192,8 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Client Login and House Display -->
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
+
 </html>
