@@ -1,38 +1,100 @@
 /* style.css */
 
+/* Reset and Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #ebf191;
+    background-color: #f0f0f0; /* Light gray background */
     margin: 0;
     padding: 0;
 }
 
 .container {
     width: 80%;
+    max-width: 1200px;
     margin: auto;
-    overflow: hidden;
-    padding-top: 20px;
-}
-
-.house {
-    background: #b5dff7;
-    margin: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-h1, h2 {
-    color: #a31212;
+/* House Listing Styles */
+.house {
+    background: #ffffff; /* White background */
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
 }
 
-p {
-    color: #a3f184;
+.house h2 {
+    color: #333333; /* Dark gray for headings */
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.house p {
+    color: #666666; /* Medium gray for text */
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.house a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff; /* Blue button background */
+    color: #ffffff; /* White button text */
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.house a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Header and Footer Styles */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1, header h2 {
+    color: #a31212; /* Reddish color for headers */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
 footer {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 40px;
+    padding: 20px 0;
+    background-color: #333333; /* Dark background for footer */
+    color: #ffffff; /* White text color */
+}
+
+footer p {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+/* Client Login Button */
+.client-login-btn {
+    padding: 12px 20px;
+    background-color: #007bff; /* Blue button background */
+    color: #ffffff; /* White button text */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.client-login-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
