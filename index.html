@@ -7,39 +7,103 @@
     <title>Ranchi House Rentals - Find Your Perfect Home</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Additional CSS specific to this page */
-        .login-form {
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
             margin-bottom: 20px;
+            color: #007bff;
         }
-        .login-form input {
-            padding: 8px;
-            margin-right: 10px;
-            width: 150px;
-        }
-        .otp-form {
-            display: none; /* Hidden by default */
-        }
-        .otp-form.show {
-            display: block; /* Display when OTP login is active */
-        }
-        .otp-form input {
-            padding: 8px;
-            margin-right: 10px;
-            width: 80px;
-        }
-        .otp-form .submit-btn {
-            padding: 8px 20px;
+
+        .client-login-btn {
+            padding: 12px 20px;
             background-color: #007bff;
             color: #fff;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
         }
-        .otp-form .submit-btn:hover {
+
+        .client-login-btn:hover {
             background-color: #0056b3;
         }
-        .otp-form .submit-btn:active {
+
+        .house {
+            background: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .house:hover {
+            transform: translateY(-5px);
+        }
+
+        .house h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .house p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .house a {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .house a:hover {
             background-color: #0056b3;
-            transform: translateY(1px);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #666;
         }
     </style>
 </head>
@@ -47,29 +111,17 @@
 <body>
     <div class="container">
         <header>
-            <h1>Ranchi House Rentals - Find Your Perfect Home</h1>
-            <!-- User Login Form -->
-            <form id="loginForm" class="login-form">
-                <input id="mobileNumber" type="tel" placeholder="Enter your mobile number">
-                <button id="sendOTPBtn" type="button" class="submit-btn">Send OTP</button>
-            </form>
-
-            <!-- OTP Verification Form -->
-            <form id="otpForm" class="otp-form">
-                <input id="otpInput" type="text" placeholder="Enter OTP">
-                <button id="verifyOTPBtn" type="button" class="submit-btn">Verify OTP</button>
-            </form>
+            <h1>Ranchi House Rentals</h1>
+            <!-- Client Login Button -->
+            <button id="clientLoginBtn" class="client-login-btn">Client Login</button>
         </header>
-        
+
         <section id="houses">
             <!-- Example house listing -->
             <div class="house">
                 <h2>Beautiful Family Home</h2>
                 <p><strong>Location:</strong> Delatoli, Tiril, Kokar, Ranchi, Jharkhand</p>
                 <p><strong>Price:</strong> $1200/month</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero quis libero faucibus,
-                    ac convallis quam convallis. Suspendisse lacinia nisi quis sapien convallis, id lacinia sem
-                    dapibus.</p>
                 <a href="#">View Details</a>
             </div>
 
@@ -83,31 +135,109 @@
         </footer>
     </div>
 
-    <!-- JavaScript for OTP functionality -->
+    <!-- JavaScript for Client Login Popup and OTP functionality -->
     <script>
-        // Simulating OTP functionality for demonstration purposes
-        document.getElementById('sendOTPBtn').addEventListener('click', function() {
-            var mobileNumber = document.getElementById('mobileNumber').value;
-            if (mobileNumber) {
-                // Simulate sending OTP (for demonstration)
-                alert('OTP sent to ' + mobileNumber);
-                // Show OTP verification form
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('otpForm').style.display = 'block';
-            } else {
-                alert('Please enter a valid mobile number.');
-            }
-        });
+        // Function to open client login popup
+        function openClientLoginPopup() {
+            var popup = window.open('', 'clientLoginPopup', 'width=400,height=400');
+            var htmlContent = `
+                <html>
+                <head>
+                    <title>Client Login</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            padding: 20px;
+                        }
+                        input {
+                            padding: 10px;
+                            margin-bottom: 10px;
+                            width: calc(100% - 20px);
+                            font-size: 1rem;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                            outline: none;
+                        }
+                        .otp-container {
+                            display: none;
+                        }
+                        .otp-container.active {
+                            display: block;
+                        }
+                        .btn-container {
+                            text-align: center;
+                            margin-top: 20px;
+                        }
+                        .btn-container button {
+                            padding: 12px 20px;
+                            background-color: #007bff;
+                            color: #fff;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            font-size: 1rem;
+                            transition: background-color 0.3s ease;
+                        }
+                        .btn-container button:hover {
+                            background-color: #0056b3;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h2>Client Login</h2>
+                    <input id="mobileNumberInput" type="tel" placeholder="Enter your mobile number">
+                    <div class="otp-container" id="otpContainer">
+                        <input id="otpInput" type="text" placeholder="Enter OTP">
+                    </div>
+                    <div class="btn-container">
+                        <button id="getOTPBtn">Get OTP</button>
+                        <button id="resendOTPBtn">Resend OTP</button>
+                        <button id="verifyOTPBtn">Verify OTP</button>
+                    </div>
+                    <script>
+                        var otpContainer = document.getElementById('otpContainer');
+                        var getOTPBtn = document.getElementById('getOTPBtn');
+                        var resendOTPBtn = document.getElementById('resendOTPBtn');
+                        var verifyOTPBtn = document.getElementById('verifyOTPBtn');
 
-        document.getElementById('verifyOTPBtn').addEventListener('click', function() {
-            var otpInput = document.getElementById('otpInput').value;
-            if (otpInput) {
-                // Simulate OTP verification (for demonstration)
-                alert('OTP verified successfully!');
-                // Redirect or perform login action here
-            } else {
-                alert('Please enter OTP to verify.');
-            }
+                        getOTPBtn.addEventListener('click', function() {
+                            var mobileNumber = document.getElementById('mobileNumberInput').value;
+                            if (mobileNumber) {
+                                alert('OTP sent to ' + mobileNumber);
+                                otpContainer.classList.add('active');
+                            } else {
+                                alert('Please enter a valid mobile number.');
+                            }
+                        });
+
+                        resendOTPBtn.addEventListener('click', function() {
+                            var mobileNumber = document.getElementById('mobileNumberInput').value;
+                            if (mobileNumber) {
+                                alert('Resent OTP to ' + mobileNumber);
+                            } else {
+                                alert('Please enter a valid mobile number.');
+                            }
+                        });
+
+                        verifyOTPBtn.addEventListener('click', function() {
+                            var otpInput = document.getElementById('otpInput').value;
+                            if (otpInput) {
+                                alert('OTP verified successfully!');
+                                window.close(); // Close popup after verification
+                            } else {
+                                alert('Please enter OTP to verify.');
+                            }
+                        });
+                    </script>
+                </body>
+                </html>
+            `;
+            popup.document.write(htmlContent);
+        }
+
+        // Event listener for client login button
+        document.getElementById('clientLoginBtn').addEventListener('click', function() {
+            openClientLoginPopup();
         });
     </script>
 </body>
