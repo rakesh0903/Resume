@@ -1,81 +1,62 @@
-// Function to open client login modal with area-specific functionality
-function showLoginModal(area) {
-    var modal = document.getElementById('loginModal');
-    modal.style.display = 'block';
-    document.getElementById('selectedArea').value = area; // Store selected area in hidden input
-}
+document.addEventListener('DOMContentLoaded', function () {
+    const houseData = {
+        'kokar-chowk': [
+            {
+                title: 'Beautiful Family Home',
+                location: 'Kokar Chowk, Ranchi, Jharkhand',
+                price: '$1200/month',
+                details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                imageUrl: 'house1.jpg', // Replace with actual image URL
+                mapLocation: { lat: 23.358069, lng: 85.343068 }, // Replace with actual geo-location coordinates
+            },
+            // Add more houses for Kokar Chowk as needed
+        ],
+        'kokar-bazaar': [
+            {
+                title: 'Modern Apartment',
+                location: 'Kokar Bazaar, Ranchi, Jharkhand',
+                price: '$1500/month',
+                details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                imageUrl: 'house2.jpg', // Replace with actual image URL
+                mapLocation: { lat: 23.371667, lng: 85.324167 }, // Replace with actual geo-location coordinates
+            },
+            // Add more houses for Kokar Bazaar as needed
+        ],
+        // Define similar data for other areas
+    };
 
-// Function to close client login modal
-function closeLoginModal() {
-    var modal = document.getElementById('loginModal');
-    modal.style.display = 'none';
-}
+    // Function to display houses for a specific area
+    function displayHouses(areaId) {
+        const housesContainer = document.getElementById('houses');
+        housesContainer.innerHTML = ''; // Clear previous listings
 
-// Function to simulate OTP generation (replace with actual backend logic)
-function getOTP() {
-    var otpContainer = document.getElementById('otpContainer');
-    otpContainer.style.display = 'block';
-}
+        if (houseData[areaId]) {
+            houseData[areaId].forEach(house => {
+                const houseElement = document.createElement('div');
+                houseElement.classList.add('house');
 
-// Function to verify OTP and show area selection
-function verifyOTP() {
-    var otpInput = document.getElementById('otpInput').value;
-    if (otpInput === '123456') { // Example OTP verification (replace with actual logic)
-        document.getElementById('otpContainer').style.display = 'none';
-        document.getElementById('areaSelection').style.display = 'block';
-    } else {
-        alert('Invalid OTP. Please try again.');
+                const htmlContent = `
+                    <h2>${house.title}</h2>
+                    <p><strong>Location:</strong> ${house.location}</p>
+                    <p><strong>Price:</strong> ${house.price}</p>
+                    <p>${house.details}</p>
+                    <img src="${house.imageUrl}" alt="${house.title}">
+                    <a href="#">View Details</a>
+                `;
+
+                houseElement.innerHTML = htmlContent;
+                housesContainer.appendChild(houseElement);
+            });
+        }
     }
-}
 
-// Function to display houses based on selected area
-function showSelectedArea() {
-    var selectedArea = document.getElementById('areaSelect').value;
-    if (selectedArea) {
-        // Example: Fetch houses data for selected area (replace with actual data fetching logic)
-        var housesData = getHousesData(selectedArea);
-        displayHouses(housesData);
-    } else {
-        alert('Please select an area.');
-    }
-}
-
-// Example function to fetch houses data based on selected area (replace with actual backend logic)
-function getHousesData(area) {
-    // Simulated data for demonstration
-    switch (area) {
-        case 'kokar-chowk':
-            return [
-                { type: 'Beautiful Family Home', price: '$1200/month', location: 'Kokar Chowk' },
-                { type: 'Modern Apartment', price: '$1500/month', location: 'Kokar Chowk' },
-                // Add more houses as needed
-            ];
-        case 'kokar-bazaar':
-            return [
-                { type: 'Spacious Villa', price: '$1800/month', location: 'Kokar Bazaar' },
-                { type: 'Cozy Cottage', price: '$1000/month', location: 'Kokar Bazaar' },
-                // Add more houses as needed
-            ];
-        // Add cases for other areas
-        default:
-            return [];
-    }
-}
-
-// Function to display houses in the DOM
-function displayHouses(housesData) {
-    var housesContainer = document.getElementById('houses');
-    housesContainer.innerHTML = ''; // Clear previous content
-
-    housesData.forEach(function(house) {
-        var houseHTML = `
-            <div class="house">
-                <h2>${house.type}</h2>
-                <p><strong>Location:</strong> ${house.location}</p>
-                <p><strong>Price:</strong> ${house.price}</p>
-                <a href="#">View Details</a>
-            </div>
-        `;
-        housesContainer.insertAdjacentHTML('beforeend', houseHTML);
+    // Event listeners for area links
+    const areaLinks = document.querySelectorAll('nav ul li a');
+    areaLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            const areaId = link.getAttribute('href').substring(1); // Get area ID without #
+            displayHouses(areaId);
+        });
     });
-}
+});
