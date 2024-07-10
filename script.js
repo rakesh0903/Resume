@@ -1,68 +1,95 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const houseData = {
-        'kokar-chowk': [
-            {
-                title: 'Beautiful Family Home',
-                type: '2 BHK Apartment',
-                address: 'Kokar Chowk, Ranchi, Jharkhand',
-                contact: 'Contact: 123-456-7890',
-                description: '2 BHK आपार्टमेंट जिसमें 2 बेडरूम, 1 हाल, 1 किचन, और 1 बाथरूम है।',
-                facilities: 'फैसिलिटीज़: पानी सप्लाई, बिजली सप्लाई, पार्किंग, सुरक्षा सेवा।',
-                carpetArea: 'कार्पेट क्षेत्र: 1000 वर्ग फुट',
-                roomSizes: 'कमरों की आकार: 12x14 फीट, 10x12 फीट',
-                balcony: 'बालकन: हाँ (2)',
-                kitchen: 'रसोई: मॉड्यूलर किचन',
-                bathroomSize: 'बाथरूम की आकार: 8x6 फीट',
-                bathroomType: 'बाथरूम के प्रकार: संयुक्त बाथरूम',
-                geoLocation: { lat: 23.358069, lng: 85.343068 }, // Replace with actual geo-location coordinates
-            },
-            // Add more houses for Kokar Chowk as needed
-        ],
-        // Define similar data for other areas
-    };
+// Wait for the document to load before running script
+document.addEventListener("DOMContentLoaded", function() {
+    const areaDropdown = document.getElementById("area-dropdown");
+    const houseListingsSection = document.getElementById("house-listings");
 
-    // Function to display houses for a specific area
-    function displayHouses(areaId) {
-        const housesContainer = document.getElementById('houses');
-        housesContainer.innerHTML = ''; // Clear previous listings
+    // Event listener for when area dropdown selection changes
+    areaDropdown.addEventListener("change", function() {
+        const selectedArea = areaDropdown.value;
+        // Fetch house listings for the selected area
+        fetchHouseListings(selectedArea);
+    });
 
-        if (houseData[areaId]) {
-            houseData[areaId].forEach(house => {
-                const houseElement = document.createElement('div');
-                houseElement.classList.add('house');
+    // Function to fetch house listings based on selected area
+    function fetchHouseListings(area) {
+        // Example: Simulate fetching data (replace with actual data retrieval logic)
+        const houseListings = getHouseListings(area);
 
-                const htmlContent = `
-                    <h2>${house.title}</h2>
-                    <p>${house.type}</p>
-                    <p><strong>Address:</strong> ${house.address}</p>
-                    <p>${house.contact}</p>
-                    <div class="details">
-                        <span>${house.description}</span>
-                        <span>${house.facilities}</span>
-                        <span><strong>Carpet Area:</strong> ${house.carpetArea}</span>
-                        <span><strong>Room Sizes:</strong> ${house.roomSizes}</span>
-                        <span><strong>Balcony:</strong> ${house.balcony}</span>
-                        <span><strong>Kitchen:</strong> ${house.kitchen}</span>
-                        <span><strong>Bathroom Size:</strong> ${house.bathroomSize}</span>
-                        <span><strong>Bathroom Type:</strong> ${house.bathroomType}</span>
-                    </div>
-                    <div class="geo-location">
-                        <p>Geo Location: Latitude ${house.geoLocation.lat}, Longitude ${house.geoLocation.lng}</p>
-                    </div>
-                `;
+        // Clear previous listings
+        houseListingsSection.innerHTML = "";
 
-                houseElement.innerHTML = htmlContent;
-                housesContainer.appendChild(houseElement);
+        // Display house listings for the selected area
+        houseListings.forEach(listing => {
+            const houseType = listing.type;
+            const address = listing.address;
+            const contact = listing.contact;
+
+            // Create HTML elements for each house listing
+            const houseListingDiv = document.createElement("div");
+            houseListingDiv.classList.add("house-type");
+
+            const titleElement = document.createElement("h3");
+            titleElement.textContent = houseType;
+            houseListingDiv.appendChild(titleElement);
+
+            const detailsParagraph = document.createElement("p");
+            detailsParagraph.textContent = address;
+            houseListingDiv.appendChild(detailsParagraph);
+
+            const contactLink = document.createElement("a");
+            contactLink.textContent = "Contact: " + contact;
+            contactLink.href = "tel:" + contact;
+            houseListingDiv.appendChild(contactLink);
+
+            const viewDetailsButton = document.createElement("button");
+            viewDetailsButton.textContent = "View Details";
+            viewDetailsButton.addEventListener("click", function() {
+                // Handle view details click (e.g., show modal or navigate to details page)
+                showHouseDetails(listing);
             });
+            houseListingDiv.appendChild(viewDetailsButton);
+
+            // Append house listing to the section
+            houseListingsSection.appendChild(houseListingDiv);
+        });
+    }
+
+    // Function to simulate fetching house listings data (replace with actual implementation)
+    function getHouseListings(area) {
+        // Example data (replace with your actual data retrieval logic)
+        switch (area) {
+            case "kokar-chowk":
+                return [
+                    {
+                        type: "Beautiful Family Home",
+                        address: "Kokar Chowk, Ranchi, Jharkhand",
+                        contact: "123-456-7890"
+                        // Add more details as needed
+                    },
+                    // Add more listings for Kokar Chowk
+                ];
+            case "deepatoili":
+                return [
+                    {
+                        type: "Cozy Apartment",
+                        address: "Deepatoili, Ranchi, Jharkhand",
+                        contact: "987-654-3210"
+                        // Add more details as needed
+                    },
+                    // Add more listings for Deepatoili
+                ];
+            // Add cases for other areas with their respective listings
+            default:
+                return [];
         }
     }
 
-    // Event listener for area link (Kokar Chowk)
-    const kokarChowkLink = document.querySelector('nav ul li a[href="#kokar-chowk"]');
-    if (kokarChowkLink) {
-        kokarChowkLink.addEventListener('click', function (event) {
-            event.preventDefault();
-            displayHouses('kokar-chowk');
-        });
+    // Function to handle showing house details (replace with your actual implementation)
+    function showHouseDetails(houseData) {
+        // Example: You can navigate to a new page or show modal with details
+        console.log("Showing details for house:", houseData.type);
+        // Replace with your actual implementation (e.g., navigate to details page)
+        // Example: window.location.href = "details.html?id=" + houseData.id; // Navigate to details page
+        // Example: showModal(houseData); // Show modal with house details
     }
 });

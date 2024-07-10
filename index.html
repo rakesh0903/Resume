@@ -1,176 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ranchi House Rentals</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Global Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: #343a40;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin: 0;
-        }
-
-        /* Navigation Styles */
-        nav {
-            background-color: #343a40;
-            padding: 10px 0;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #ffc107; /* Yellow color on hover */
-        }
-
-        /* Main Content Styles */
-        #houses {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            grid-gap: 20px;
-            margin-top: 20px;
-        }
-
-        .house {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .house:hover {
-            transform: translateY(-5px);
-        }
-
-        .house h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #343a40; /* Dark gray color */
-        }
-
-        .house p {
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        .house .details {
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-
-        .house .details span {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .house .geo-location {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        /* Footer Styles */
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px 0;
-            background-color: #343a40;
-            color: #fff;
-            border-top: 1px solid #ccc;
-        }
-
-        footer p {
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: #ffc107; /* Yellow color for footer links */
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #f8f9fa; /* Light gray on hover */
-        }
-    </style>
+    <!-- Include any necessary CSS files -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <header>
-        <div class="container">
-            <h1>Ranchi House Rentals</h1>
-        </div>
+        <h1>Ranchi House Rentals</h1>
+        <!-- Dropdown menu for areas -->
+        <select id="area-dropdown">
+            <option value="kokar-chowk">Kokar Chowk</option>
+            <option value="deepatoili">Deepatoili</option>
+            <option value="bootymore">Bootymore</option>
+            <option value="hinoo">Hinoo</option>
+            <option value="harmu">Harmu</option>
+            <option value="ratu-road">Ratu Road</option>
+            <option value="dhurwa">Dhurwa</option>
+            <option value="lalpur">Lalpur</option>
+            <option value="upper-bazaar">Upper Bazaar</option>
+            <option value="main-road">Main Road</option>
+            <option value="morabadi">Morabadi</option>
+        </select>
     </header>
 
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#kokar-chowk">Kokar Chowk</a></li>
-                <!-- Add more area links as needed -->
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container">
-        <section id="houses">
-            <!-- House listings will be dynamically added here based on selected area -->
+    <!-- Main content area -->
+    <main>
+        <!-- Section for displaying house types based on selected area -->
+        <section id="house-listings">
+            <!-- House listings will be dynamically populated based on selected area -->
         </section>
-    </div>
+    </main>
 
     <footer>
-        <div class="container">
-            <p>Contact the website developer for house inquiries: <a href="tel:+917992389010">7992389010</a></p>
-            <p>&copy; 2024 Ranchi House Rentals. All rights reserved.</p>
-        </div>
+        <p>Contact the website developer for house inquiries: <a href="tel:7992389010">7992389010</a></p>
+        <p>&copy; 2024 Ranchi House Rentals. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Include script.js for dynamic functionality -->
     <script src="script.js"></script>
 </body>
-
 </html>
